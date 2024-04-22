@@ -1,0 +1,519 @@
+%Project Report On 8085 Microprocessor
+\documentclass[14pt]{article}
+\title{\Huge{\textbf{\textcolor{blue}{Project Report on \\8085 Microprocessor}}}}
+\author{\textbf{By Vikas}}
+\date{Submitted to Prof. Navdeep Goyal}
+
+\usepackage{hyperref}
+\usepackage{extsizes} %Use this package for global fontsizes 8,10,11,12,14,17,20 
+\usepackage{amsmath}
+\usepackage{xcolor} %Use this package for various types of colors
+\usepackage{titlesec} %Use this package for changing section , subsection etc formatting and spacing
+\usepackage{graphicx} %Use this package to include images
+\usepackage[margin=0.8in,top=0.8in]{geometry} %Use this package to set margins
+
+\titleformat{\section} %Change the format of Section Headings 
+{\huge\bfseries}
+{\thesection} %You can also write '$/bullet$' in here !'thesection' is for numbering before headings
+{0.5em}
+{}[\titlerule]
+\titlespacing{\section} %Change the spacing left , up or down to the section heading
+{0in}{0.5in}{0.4in}
+\titleformat{\subsection}
+{\color{blue}\bfseries\Large}{}{0em}{}
+\titleformat{\subsubsection}
+{\color{red}\bfseries\large}{}{0em}{}
+\newcommand{\sectionbreak}{\clearpage}
+\hypersetup{
+	colorlinks = true ,
+	linkcolor=blue ,
+	linktoc=all ,
+}
+
+
+
+\begin{document}
+%==========================================================================
+
+\begin{center}
+	\vspace{2em}
+	\textbf{ \large Project Report\\}
+	\vspace{1em}
+	\textbf{\Huge 8085 Microprocessor\\}
+	\vspace{0.5em}
+	\vspace{2em}
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=0.35\textwidth]{reqd/0.png}
+	\end{figure}
+	\vspace{2em}
+	\large Submitted to :-\\
+	\vspace{0.5em}
+	\textbf{\Large Prof. Navdeep Goyal}\\
+	\vspace{2em}
+	\large Submitted by :-\\
+	\vspace{0.5em}
+	\textbf{\Large Vikas}\\
+	\vspace{2em}
+	MSc [H. S.] Physics , 4th Semester \\
+	Department of Physics \\
+	Panjab University\\
+	Chandigrah\\
+	
+\end{center}
+
+
+
+%||||||||||||||||||||||||||||||||||||||||||||||||||||(Index)
+\setcounter{tocdepth}{1}
+\tableofcontents
+
+
+
+%||||||||||||||||||||||||||||||||||||||||||||||||||||(Introduction)
+\section{Introduction}
+A microprocessor is a computer processor where the data processing logic and control is included on a single integrated circuit, or a small number of integrated circuits. The microprocessor contains the arithmetic, logic, and control circuitry required to perform the functions of a computer's central processing unit. The integrated circuit is capable of interpreting and executing program instructions and performing arithmetic operations.\\ \\
+\textbf{The microprocessor is a multipurpose, clock-driven, register-based, digital integrated circuit that accepts binary data as input, processes it according to instructions stored in its memory, and provides results (also in binary form) as output.} Microprocessors contain both combinational logic and sequential digital logic, and operate on numbers and symbols represented in the binary number system.\\ \\ \\
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.75\textwidth]{reqd/8085chip.jpg}
+	\caption{8085 Microprocessor Chip}
+\end{figure}
+
+
+
+%|||||||||||||||||||||||||||||||||||||||||||||||||||(Knowing 8085 Micrprocessor)
+\section{Knowing 8085 Microprocessor}
+Microprocessor consists of :-
+\begin{itemize}
+	\item{\textbf{Control Units}} controls microprocessor operations .
+	\item{\textbf{ALU}} performs data processing function .
+	\item{\textbf{Registers}} provide storage internal to CPU .
+	\item{\textbf{Interrupts}}
+	\item{\textbf{Internal Data Bus}} \\
+\end{itemize}
+
+8085 is an eight bit device so it can have $2^{8}=256$ instructions . However 8085 microprocessor only uses 246 combinations that represent a total of 74 instructions because several instructions have more than one format . All of the instructions can be classified in two ways : 1) Based on Size and 2) Based on Fuctions .\\\\
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.85\textwidth]{reqd/8085instructionSet.jpg}
+	\caption{8085 Instructions Set}
+\end{figure}
+\vspace{2em}
+
+Microprocessor 8085 is a general purpose 8 bit microprocessor :-
+\begin{itemize}
+	\item{It was designed by intel in 1977 using NMOS technology .}
+	\item{It was the first commercially successful microprocessor by INTEL .}
+	\item{It is capable of addressing 64K of memory .}
+	\item{It has 8 bit data bus and 16 bit address bus .}
+	\item{It has 40 pins .}
+	\item{It can take 5 Volts power supply and 3 MHz clock .}
+	\item{While a microcontroller puts the CPU and all peripherals onto the same chip, a microprocessor houses a more powerful CPU on a single chip that connects to external peripherals .}
+	\item{8085 is binary compatible follow up on 8080 . It supports the complete instruction set of 8080 with exactly the same instruction behaviour , including all effects on CPU flags etc .}
+	\item{The 8085 processor was used in a few early personal computers , for example the TRS-80 Model 100 line used an OKI manufactured 80C85 .}
+	\item{In many engineering schools the 8085 processor is used in introductory microprocessor courses . Trainer Kits composed of printed circuit board 8085 and supporting hardware are offered by various companies .}
+\end{itemize}
+
+
+
+%|||||||||||||||||||||||||||||||||||||||||||||||||||(Architecture of 8085)
+\section{Architecture of 8085}
+The block diagram for 8085 Microprocessor is shown here. It consists of several parts which are mentioned ahead .
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=\textwidth]{reqd/8085architecture.jpg}
+	\caption{8085 Architecture}
+\end{figure}
+\subsection{Arithematic Logic Unit}
+Arithematic Logic Unit carries out bitwise arithematic operations such as addition , subtraction etc. It also carries out the logical operations like AND , OR , rotate and much more .
+\subsection{Timing and Control Unit}
+The control unit is obliged for all operations and occur at the same time with the help of clock signal .
+\subsection{General Purpose Register}
+The eight bit general purpose registers are B,C,D,E,H and L and in pairs they act as 16 bit registers like BC , DE and HL . These are also called `Scratch Pad Registers' .
+\subsection{Programme Status Controller}
+The group of 5 flip-flops which work as `Status Flag' and in INTEL 8085 , five flags are carry (CS) , zero (Z) , Sign (S) , Parity (P) and auxilllary (AC) and along with these , there are three undefined bit which together sare called programme status world .
+\subsection{Serial Data Transfer}
+SID and SOD are used to accept and transmit the data in bit by bit .
+\subsection{DMA Controller}
+HOLD , HLDA are two DMA signals .
+\subsection{RESET Signal}
+The two reset signals are RESET IN and RESET OUT .
+\subsection{Power Supply}
+It requires a power supply of 5V and CLK out is used as a system clock . 
+
+
+
+%|||||||||||||||||||||||||||||||||||||||||||||||||||(Instructions)
+\section{Instructions}
+Each instruction has two parts :-
+\begin{enumerate}
+\item{The first part is the task to be performed called `OPCODE' .}
+\item{The second part is the data to be operated on called `OPERAND' .}
+\end{enumerate}
+Every Instruction can be categorised in either of these five types :
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.85\textwidth]{reqd/8085instructions.jpg}
+	\caption{8085 Instructions}
+\end{figure}
+
+\subsection{Data Transfer Operations}
+These operations simply COPY the data from the source to it's destination . It doesn't change the source ; e.g. MOV , MVI , LDA and STA etc.\\
+They transfer :-
+\begin{enumerate}
+\item{Data between Registers}
+\item{Data Byte from Register and Memory}
+\item{Data Byte to registers or memory}
+\item{Data between I/O device and accumulator}
+\end{enumerate}
+
+\subsection{Arithematic Operations}
+These instructions perform an arithematic operation using the contact of a memory location while they are still memory or using content of registers like addition (ADD,ADI) , subtraction (SUB,SUI) and increament (INR) in memory or data or decreament (DCR) .
+\subsubsection{ADD, ADI, SUB, SUI}
+The content is added or subtracted with content of accumulator and the result is stored in the accumulator , but when we are doing arithematic operation using the content of ML (Memory Location) , while still in memory the content of HL register pair is used to identify the memory location .
+
+\subsection{Logical Operations}
+These instructions perform logical operations on the content of the accumulator e.g XNA,ANI,ORA,ORI,XRA,XRI.\\
+\textbf{Source :} Accumulator (8 bit no. / content of register / content of memory location)\\
+\textbf{Destination :} Accumulator .
+\begin{itemize}
+\item{\textbf{Compliment :}} 1's compliment of the content of the accumulator .
+\item{\textbf{Rotate :}} Rotate the content of the accumulator one position on the left or right . RLC,RAL rotates the accumulator left and RRC,RAR rotates the accumulator right .
+\item{\textbf{Compare :}} Compare the content of a register or memory location with the conetent of accumulator e.g. CMP,CPI . It sets the flags Z,C,Y,S . Compare is done using internal subtraction that doesn't change the content of accumulator .
+\end{itemize}
+
+\subsection{Branch Operations}
+Branch Operations are of 2 types :-
+\begin{itemize}
+\item{Unconditional Branch go to new location no matter what . } 
+\item{Conditional Branch go to new location if condition is true . }
+\end{itemize}
+\subsubsection{Unconditional Branch}
+\begin{itemize}
+\item{\textbf{JMP Add :}} jump to address specified .
+\item{\textbf{CALL Add :}} jump to add specified but treat it as a subroutine .
+\item{\textbf{RET :}} return from a subroutine .
+\end{itemize}
+\subsubsection{Conditional Branch}
+\begin{itemize}
+\item{\textbf{JZ,JNZ :}} Zero flag is set or not set respectively .
+\item{\textbf{JC,JNC :}} Carry flag is set or not set respectively .
+\item{\textbf{JP,JM :}} sign flag is set or not set respectively .
+\end{itemize}
+
+\subsection{Machine Control Operations}
+\begin{itemize}
+	\item{\textbf{HLT :}} Stops executing programme .
+	\item{\textbf{NOP :}} No operation , does exactly nothing as specified . Only used for delay or to replace instruction during debugging .
+\end{itemize}
+
+
+
+%|||||||||||||||||||||||||||||||||||||||||||||||||||(Pin Configurations And Working)
+\section{Pin Configuration And Working}
+\begin{figure}[h]
+	\centering
+	\includegraphics[height=0.5\textheight]{reqd/8085pinConfiguration.jpg}
+	\caption{8085 Pin Diagram}
+\end{figure}
+\vspace{1em}
+The pins of a 8085 microprocessor can be classified into seven groups :-
+\begin{enumerate}
+	\item{\textbf{Address Bus :}} A15-A8, it carries the most significant 8-bits of memory/IO address .
+	\item{\textbf{Data Bus :}} AD7-AD0, it carries the least significant 8-bit address and data bus.
+	\item{\textbf{Control and Status Signal :}} These signals are used to identify the nature of operation. There are 3 control signal and 3 status signals. Three control signals are RD, WR and ALE. Three status signals are IO/M, S0 and S1.
+	\item{\textbf{Power Supply : }} There are 2 power supply signals - VCC and VSS . VCC indicates +5V power supply and VSS indicates ground signal. 
+	\item{\textbf{Clock Signal : }} There are 3 clock signals : X1, X2, CLK OUT .
+	\item{\textbf{Interrupts and Externally Initiated Signals : }} Interrupts are the signals generated by external devices to request the microprocessor to perform a task. There are 5 interrupt signals, i.e. TRAP, RST 7.5, RST 6.5, RST 5.5, and INTR.
+	\item{\textbf{Serial I/O Signals : }} There are 2 serial signals, i.e. SID and SOD and these signals are used for serial communication.
+\end{enumerate}
+
+\subsection{Working}
+\vspace{1em}
+\begin{itemize}
+	\item{We already know that the function of a microprocessor is to execute instructions. Also, in order to execute an instruction, it first needs to be fetched then decoded and then executed. And in order to fetch an instruction, firstly the address of the instruction must be known.}
+	\item{The address of the instruction is present in the program counter. This address is then placed on the 16-bit address bus and is then forwarded towards the memory. From the memory, the instruction present at that particular memory location is fetched through the 8-bit data bus .}
+	\item{Further when the instruction is fetched from the memory, then through internal buses the instruction is provided to the instruction register. At this particular point of time fetching the instruction from the memory is over .}
+	\item{We already have the idea that both data and instruction in the memory is stored in the form of an opcode. So, the fetched opcode is analyzed by the instruction decoder present inside the processor in order to execute the instruction. But after an instruction is fetched from the memory, then PC increments itself thereby providing the address location of the next instruction. As PC does not play any role in decoding and executing. }
+	\item{Once the data is fetched from a particular register then it is stored in the temporary register and it is used by the ALU . Now, once the operation is executed, then the result is fed to the accumulator through the data bus. But a flag register is also present that holds the status of the result present at the accumulator . After every instruction execution performed by the ALU, the status of the flag register gets changed. So, ALU produces the result and its status simultaneously after each operation . }
+\end{itemize}
+
+
+
+%|||||||||||||||||||||||||||||||||||||||||||||||||||(Experiment)
+\section{Experiment}
+\subsection{Aim}
+To perform the basic operations of addition , subtraction , multiplication and division using 8085 Microprocessor .
+
+\subsection{Apparatus}
+\begin{enumerate}
+	\item{8085 Microprocessor kit}
+	\item{Power Supply}
+\end{enumerate}
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=\textwidth]{reqd/8085trainerKit.jpg}
+	\caption{8085 Trainer Kit}
+\end{figure}
+
+\subsection{Procedure}
+The general procedure for all operations is :-
+\begin{enumerate}
+	\item{Turn on the Kit and press RESET Key ..}
+	\item{Press examine memory key ..}
+	\item{Give the desired numbers at a particular memory location . It will be stored in the form of hexadecimal number in our kit .}
+	\item{We then press NEXT Key .}
+	\item{Write down the hex code programme for the particulare operations to be performed .}
+	\item{After the code is written press `Fill' Key .}
+	\item{We need to execute it now , press `Go' Key and after that memory location of the first programme line . The letter `E' on the screen indicates that the execution of the programme is completed .}
+	\item{In order to check the result , enter the RESET Key , then examine key and enter the memory location of the result .}
+\end{enumerate}
+
+\subsection{Precautions}
+\begin{itemize}
+	\item{Take care while carrying out the subtraction of two numbers , because the bit stored in a registor will always be subtracted from the bit stored in an accumulator . So , the number in A must be greater than the number in B .}
+	\item{Note down the data address of the programme line 1 , as it is required at the time of execution .}
+\end{itemize}
+
+
+
+%||||||||||||||||||||||||||||||||||||||||||||||||||||||||(Programming on 8085)
+\section{Programming On 8085}
+\subsection{Addition}
+\begin{center}
+\vspace{1em}
+\begin{tabular}{ |c|c|c|c| }
+	\hline
+	\textbf{LOCATION} & \textbf{OPCODE} & \textbf{OPERAND} & \textbf{HEXCODE} \\
+	\hline
+	2000 & LDA & 3000 & 3A \\
+	\hline
+	2001 &  &  & 00 \\ 
+	\hline
+	2002 &  &  & 30 \\
+	\hline
+	2003 & MOV B & B,A & 47 \\
+	\hline
+	2004 & LDA & 3001 & 3A \\
+	\hline
+	2005 &  &  & 01 \\
+	\hline
+	2006 &  &  & 30 \\
+	\hline
+	2007 & ADD & B & 80 \\
+	\hline
+	2008 & STA & 2100 & 32 \\
+	\hline
+	2009 &  &  & 00 \\
+	\hline
+	200A &  &  & 21 \\
+	\hline
+	200B & HLT &  & 76 \\
+	\hline	
+\end{tabular}
+\end{center}
+
+\subsection{Subtraction}
+\begin{center}
+\vspace{1em}
+\begin{tabular}{ |c|c|c|c| }
+	\hline
+	\textbf{LOCATION} & \textbf{OPCODE} & \textbf{OPERAND} & \textbf{HEXCODE} \\
+	\hline
+	2000 & LDA & 3000 & 3A \\
+	\hline
+	2001 &  &  & 00 \\ 
+	\hline
+	2002 &  &  & 30 \\
+	\hline
+	2003 & MOV B & B,A & 47 \\
+	\hline
+	2004 & LDA & 3001 & 3A \\
+	\hline
+	2005 &  &  & 01 \\
+	\hline
+	2006 &  &  & 30 \\
+	\hline
+	2007 & SUB & B & 90 \\
+	\hline
+	2008 & STA & 2100 & 32 \\
+	\hline
+	2009 &  &  & 00 \\
+	\hline
+	200A &  &  & 21 \\
+	\hline
+	200B & HLT &  & 76 \\
+	\hline	
+\end{tabular}
+\end{center}
+
+\subsection{Multiplication}
+\begin{center}
+\vspace{3em}
+\begin{tabular}{ |c|c|c|c| }
+	\hline
+	\textbf{LOCATION} & \textbf{OPCODE} & \textbf{OPERAND} & \textbf{HEXCODE} \\
+	\hline
+	2002 & MVI A & 00 & 3E \\
+	\hline
+	2003 &  &  & 00 \\
+	\hline
+	2004 & MVI B & 04 & 06 \\
+	\hline
+	2005 &  &  & 04 \\
+	\hline
+	2006 & MVI C & 09 & 0E \\
+	\hline
+	2007 &  &  & 09 \\
+	\hline
+	2008 & ADD & B & 80 \\
+	\hline
+	2009 & DCR & C & 0D \\
+	\hline
+	200A & JNZ & 2008 & C2 \\
+	\hline
+	200B &  &  & 08 \\
+	\hline
+	200C &  &  & 20 \\
+	\hline
+	200D & STA & 2100 & 32 \\
+	\hline
+	200E &  &  & 00 \\
+	\hline
+	200F &  &  & 21 \\
+	\hline
+	2010 & HLT &  & 76 \\
+	\hline
+\end{tabular}
+\end{center}
+\vspace{3em}
+\begin{itemize}
+	\item{Here we recursively add the number 4 to itself 9 times to get 36 which is basically `Multiplication' and we take a count of how many times is the number 4 added to itself in the register C .}
+	\item{JNZ makes a jump to the specified memory location , here 2008 , if and only if C does not contain 0 so that the loop goes on for desired number of times .}
+	\item{When C has the value 0 , which is the case when the number 4 is already added 9 times , we store the added value in a memory location , 2100 here and stop the programme .}
+\end{itemize}
+
+\subsection{Division}
+\begin{center}
+\vspace{1em}
+\begin{tabular}{ |c|c|c|c| }
+	\hline
+	\textbf{LOCATION} & \textbf{OPCODE} & \textbf{OPERAND} & \textbf{HEXCODE} \\
+	\hline
+	2002 & MVI A & 0F & 3E \\
+	\hline
+	2003 &  &  & 0F \\
+	\hline
+	2004 & MVI B & 04 & 06 \\
+	\hline
+	2005 &  &  & 04 \\
+	\hline
+	2006 & MVI C & 00 & 0E \\
+	\hline
+	2007 &  &  & 00 \\
+	\hline
+	2008 & CMP B &  & B8 \\
+	\hline
+	2009 & JC & 2011 & DA \\
+	\hline
+	200A &  &  & 11 \\
+	\hline
+	200B &  &  & 20 \\
+	\hline
+	200C & SUB & B & 90 \\
+	\hline
+	200D & INR & C & 0C \\
+	\hline
+	200E & JMP & 2008 & C3 \\
+	\hline
+	200F &  &  & 08 \\
+	\hline
+	2010 &  &  & 20 \\
+	\hline
+	2011 & STA & 2100 & 32 \\
+	\hline
+	2012 &  &  & 00 \\
+	\hline
+	2013 &  &  & 21 \\
+	\hline
+	2014 & MOV C & A,C & 79 \\
+	\hline
+	2015 & STA & 3000 & 32 \\
+	\hline
+	2016 &  &  & 00 \\
+	\hline
+	2017 &  &  & 30 \\
+	\hline
+	2018 & HLT &  & 76 \\
+	\hline
+\end{tabular}
+\end{center}
+\vspace{1em}
+\begin{itemize}
+	\item{Here we recusrively subtract 4 from 15 up untill we reach a number which is less than 4 itself . This is basically `Division' .}
+	\item{We compare the value of B with A ; if B is bigger than A , then we stop the loop by jumping to 2011 . If it is not the case , we subtract B from A and increase C each time to keep the count of how many times it is subtracted . So C contains the value of Quotient .}
+	\item{When A is smaller than B , loop is finished and we store the value of C which is quotient and of A which is remainder .}
+\end{itemize}
+
+
+
+%||||||||||||||||||||||||||||||||||||||||||||||||||||||(Results And Conclusion)
+\section{Results And Conclusions}
+We have found that the microprocessor 8085 is able to perform various kinds of arithematic and logical operations like addition , subraction , arranging into an order , multiplication by 10 , finding square-root and moving data from one memory location to another etc . Out of all these operations , we have extensively studied four of them : Addition of two numbers , Subtracting one number from another , Multiplying two numbers and Dividing one number by another . The results are as follows :-
+\vspace{2em}
+\begin{center}
+\begin{tabular}{ |c|c|c|c|c| }
+	\hline
+	\textbf{ }& \textbf{ADD} & \textbf{SUBTRACT} & \textbf{MULTIPLY} & \textbf{DIVIDE}\\
+	\hline
+	A & 03 & 02 & 04 & 0F[15] \\
+	\hline
+	B & 09 & 06 & 09 & 04 \\
+	\hline
+	C & 0C[12] & 04 & 24[36] & 03 \\
+	\hline
+	D & - & - & - & 03 \\
+	\hline
+	loc(A) & 3000 & 3000 & 2005 & 2003 \\
+	\hline
+	loc(B) & 3001 & 3001 & 2007 & 2005 \\
+	\hline
+	loc(C) & 2100 & 2100 & 2100 & 2100 \\
+	\hline
+	loc(D) & - & - & - & 3000 \\
+	\hline
+\end{tabular}
+\end{center}
+\vspace{2em}
+\begin{itemize}
+	\item{A and B are input numbers . A specific arithematic operation is performed upon these two numbers .}
+	\item{C is the output number .}
+	\item{D is also the output number but it is only required in division .}
+	\item{For division , C represents the remainder and D represents the quotient .}
+	\item{loc(A) represents the memory location where A is stored . The same goes for B , C and D also .}
+	\item{The squre bracket [] shows the value of the number in Decimal Number System instead of the Standard Hexadecimal Number System used for 8085 input .}
+\end{itemize}
+
+
+
+%||||||||||||||||||||||||||||||||||||||||||||||||||||||(Bibliography)
+\section{Bibliography}
+\vspace{2em}
+These internet links were helpful to study while performing the experiment :-\\
+( Click on them to open in your web browser .)
+\vspace{1em}
+\begin{itemize}
+	\item{\href{https://en.m.wikipedia.org/wiki/Microprocessor}{Microprocessor : Wikipedia}}
+	\item{\href{https://en.m.wikipedia.org/wiki/Intel_8085}{Intel 8085 : Wikipedia}}
+	\item{\href{https://www.tutorialspoint.com/microprocessor/microprocessor_8085_architecture.htm}{Microprocessor 8085 : Tutorial Point}}
+	\item{\href{https://electronicsdesk.com/8085-microprocessor.html}{8085 Microprocessor : Elctronicsdesk}}
+\end{itemize}
+\vspace{2em}
+The following book(s) were helpful to get some theoretical insights into the architecture and working of 8085 :-
+\begin{itemize}
+	\item{\textbf{Microprocessor Architecture , Programming and Applications with the 8085} by \textbf{Ramesh S. Gaonkar}}
+\end{itemize}
+
+\end{document}

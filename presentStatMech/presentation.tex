@@ -1,0 +1,614 @@
+\documentclass{beamer}
+\usetheme{Warsaw}
+
+\usepackage{tikz}
+\usepackage{graphicx}
+\usepackage{listings}
+\usepackage[labelformat=empty]{caption}
+\lstset{basicstyle=\tiny}
+
+\subtitle{P. L. Krapivsky and S. Redner}
+\title[Stat-Mech Presentation]{Random Walk With Shrinking Steps}
+\author{By Vikas, PhD, Department of Physics}
+\institute{\large \bfseries Indian Institute of Technology, Delhi}
+\date{}
+
+%======================================================================
+\begin{document}
+
+
+%----------------------------------------------------------------------
+\begin{frame}
+	\titlepage
+\end{frame}
+
+%----------------------------------------------------------------------
+\begin{frame}{Description Of The Problem}
+	\begin{itemize}
+	\setlength\itemsep{1em}
+		\item{\large Random walk in One Dimension}
+		\item{\large Random Walk is symmetric}
+		\item{\large i.e. probability of moving to right = probability to moving to the left}
+		\item{\large The step-length decreases with each step}
+		\item{\large Length of the step at nth step = $\lambda^{n}$\\
+		\vspace{0.5em}
+		where 0 $<\lambda<$ 1}
+	\end{itemize}
+\end{frame}
+
+%----------------------------------------------------------------------
+\begin{frame}{Description Of The Problem : $\lambda$ = 0.5}
+	\begin{figure}
+		\centering
+		\includegraphics[width=\textwidth]{reqd/im0.jpg}
+	\end{figure}
+	\begin{figure}
+		\centering
+		\includegraphics[width=\textwidth]{reqd/im1.jpg}
+	\end{figure}
+	\begin{figure}
+		\centering
+		\includegraphics[width=\textwidth]{reqd/im2.jpg}
+	\end{figure}
+\end{frame}
+
+%----------------------------------------------------------------------
+\begin{frame}{Description Of The Problem : $\lambda$ = 0.5}
+	\begin{figure}
+		\centering
+		\includegraphics[width=\textwidth]{reqd/im3.jpg}
+	\end{figure}
+	\begin{figure}
+		\centering
+		\includegraphics[width=\textwidth]{reqd/im4.jpg}
+	\end{figure}
+	\begin{figure}
+		\centering
+		\includegraphics[width=\textwidth]{reqd/im5.jpg}
+	\end{figure}	
+\end{frame}
+
+%----------------------------------------------------------------------
+\begin{frame}{Endpoint Probability Distribution}
+	\begin{itemize}
+	\setlength\itemsep{1em}
+		\item{\large The displacement of a one-dimensional random walk after N steps is given as :}
+	\end{itemize}
+	\begin{equation}
+		x_{N}=\sum_{n=0}^{N}\epsilon f(n)
+	\end{equation}
+	\begin{itemize}
+	\setlength\itemsep{1em}
+		\item{Where $\epsilon$ is randomly +1 or -1}
+		\item{\large And f(n)=$\lambda^{n}$ for shrinking steps}
+		\item{\large Let the endpoint probability distribution after N steps is given by : $P_{\lambda}(x,N)$}
+		\item{\large And when N $\rightarrow$ $\infty$, $P_{\lambda}(x,N)$ = $P_{\lambda}(x)$}
+	\end{itemize}
+\end{frame}
+
+%----------------------------------------------------------------------
+\begin{frame}{Description Of The Problem}
+	\begin{itemize}
+	\setlength\itemsep{1em}
+		\item{\large We are interested in finding the probability distributions of the endpoint after N steps}
+		\item{The probability that the end point is at x approaches a limiting distribution $P_{\lambda}(x)$ that has many beautiful features}
+		\item{\large Numerical simulations/solutions are done for most $\lambda$ values}
+		\item{\large But analytical solutions are found for a few values of $\lambda$ e.g. $2^{-\frac{1}{m}}$ and $\frac{1}{golden ratio}$}
+	\end{itemize}
+\end{frame}
+
+%----------------------------------------------------------------------
+\begin{frame}{Fractals}
+	\begin{itemize}
+		\item{\large A geometric shape containing detailed structure at arbitrarily small scales}
+		\item{\large And having a non-integer (fractal) dimensions}
+		\item{\large May be self similar, not always}
+		\item{\large But most of them have patterns within patterns}
+	\end{itemize}
+	\pause
+	\begin{figure}
+		\centering
+		\includegraphics[width=\textwidth]{reqd/sierpinskiTriangle.jpg}
+	\end{figure}
+	\begin{figure}
+		\centering
+		\includegraphics[width=\textwidth]{reqd/sierpinskiTriangle1.jpg}
+	\end{figure}
+\end{frame}
+
+%----------------------------------------------------------------------
+\begin{frame}{Fractals}
+	\begin{figure}
+		\centering
+		\includegraphics[width=0.7\textwidth]{reqd/sierpinskiTriangleWireConstruction.jpg}
+		\caption{Wire Construction Of Sierpinski Triangle using Arrowhead Curves}
+	\end{figure}
+\end{frame}
+
+%----------------------------------------------------------------------
+\begin{frame}{Fractals}
+	\begin{figure}
+		\centering
+		\includegraphics[width=\textwidth]{reqd/s0.jpg}
+		\caption{Source : 3Blue 1Brown}
+	\end{figure}
+	\pause
+	\begin{itemize}
+		\item{Neither a curve, nor a surface}
+		\item{Dimension = $\frac{ln(2)}{ln(3)}$ = 1.585; between 0 and 1}
+	\end{itemize}
+\end{frame}
+
+%----------------------------------------------------------------------
+\begin{frame}{Fractals}
+	\begin{figure}
+    		\centering
+    		\includegraphics[width=0.4\textwidth]{reqd/rod.jpg}
+        	\caption{Length = 1m ; Mass = 1kg}
+	\end{figure}
+	\pause
+	\begin{figure}
+    		\centering
+    		\includegraphics[width=0.8\textwidth]{reqd/rod.jpg}
+        	\caption{Length = 2m ; Mass = $2^1$ = 2kg}
+	\end{figure}
+\end{frame}
+
+%----------------------------------------------------------------------
+\begin{frame}{Fractals}
+	\begin{figure}
+    		\centering
+    		\begin{minipage}{0.5\textwidth}
+        		\centering
+        		\includegraphics[width=0.3\textwidth]{reqd/circle.jpg}
+        		\caption*{Radius = 1m ; Mass = 1kg}
+        	\end{minipage}\hfill
+        	\pause
+        	\begin{minipage}{0.5\textwidth}
+        		\centering
+        		\includegraphics[width=0.6\textwidth]{reqd/circle.jpg}
+        		\caption*{Radius = 2m ; Mass = $2^2$ = 4kg}
+        	\end{minipage}
+	\end{figure}
+\end{frame}
+
+%----------------------------------------------------------------------
+\begin{frame}{Fractals}
+	\begin{figure}
+    		\centering
+    		\begin{minipage}{0.5\textwidth}
+        		\centering
+        		\includegraphics[width=0.3\textwidth]{reqd/sphere.jpg}
+        		\caption*{Radius = 1m ; Mass = 1kg}
+        	\end{minipage}\hfill
+        	\pause
+        	\begin{minipage}{0.5\textwidth}
+        		\centering
+        		\includegraphics[width=0.6\textwidth]{reqd/sphere.jpg}
+        		\caption*{Radius = 2m ; Mass = $2^3$ = 8kg}
+        	\end{minipage}
+	\end{figure}
+\end{frame}
+
+%----------------------------------------------------------------------
+\begin{frame}{Fractals}
+	\begin{figure}
+    		\centering
+    		\begin{minipage}{0.5\textwidth}
+        		\centering
+        		\includegraphics[width=0.4\textwidth]{reqd/sierpinskiCarpet.jpg}
+        		\caption{Size = 1 ; Mass = 1kg}
+        	\end{minipage}\hfill
+        	\pause
+        	\begin{minipage}{0.5\textwidth}
+        		\centering
+        		\includegraphics[width=0.8\textwidth]{reqd/sierpinskiCarpet.jpg}
+        		\caption{Size = 2 ; Mass = $2^D$=3.71kg}
+        	\end{minipage}
+	\end{figure}
+	\vspace{1em}
+	\pause
+	\centering
+	D=1.89\\
+	\pause
+	Area=0
+\end{frame}
+
+%----------------------------------------------------------------------
+\begin{frame}{Cantor Set : Middle Third}
+	\begin{figure}
+    		\centering
+    		\includegraphics[width=\textwidth]{reqd/cantorSet.jpg}
+	\end{figure}
+	\pause
+	\begin{figure}
+    		\centering
+    		\includegraphics[width=\textwidth]{reqd/cantorSet1.jpg}
+	\end{figure}
+	\pause
+	\begin{figure}
+    		\centering
+    		\includegraphics[width=\textwidth]{reqd/cantorSet2.jpg}
+	\end{figure}
+	\pause
+	\begin{figure}
+    		\centering
+    		\includegraphics[width=\textwidth]{reqd/cantorSet3.jpg}
+	\end{figure}
+	\pause
+	\begin{figure}
+    		\centering
+    		\includegraphics[width=\textwidth]{reqd/cantorSet4.jpg}
+	\end{figure}
+	\pause
+	\begin{figure}
+    		\centering
+    		\includegraphics[width=\textwidth]{reqd/cantorSet5.jpg}
+	\end{figure}
+\end{frame}
+
+%----------------------------------------------------------------------
+\begin{frame}{Generallised Cantor Set}
+	\begin{figure}
+    		\centering
+    		\includegraphics[height=0.8\textheight]{reqd/generallisedCantorSet.jpg}
+	\end{figure}
+\end{frame}
+
+%----------------------------------------------------------------------
+\begin{frame}{Generallised Cantor Set}
+	\begin{figure}
+    		\centering
+    		\includegraphics[width=0.8\textwidth]{reqd/randomWalkGoldenRatio.jpg}
+    		\caption{Random walk with shrinking steps by a factor of 0.618 each time}
+	\end{figure}
+
+	\begin{itemize}
+		\item{This kind of looks similar to the Cantor Set}
+	\end{itemize}
+\end{frame}
+
+%----------------------------------------------------------------------
+\begin{frame}{Results For $\lambda<$ 0.5}
+	\begin{itemize}
+	\setlength\itemsep{1em}
+		\item{\large We get countably infinte set of points arranged in the form of a Cantor Set.}
+	\end{itemize}
+	\pause
+	\begin{figure}
+    		\centering
+    		\includegraphics[width=\textwidth]{reqd/lambdaEquals0.35.jpg}
+    		\caption{$\lambda$ = 0.35 after 10 steps}
+	\end{figure}
+	\pause
+	\begin{figure}
+    		\centering
+    		\includegraphics[width=\textwidth]{reqd/lambdaEquals0.45.jpg}
+    		\caption{$\lambda$ = 0.45 after 10 steps}
+	\end{figure}
+	
+\end{frame}
+
+%----------------------------------------------------------------------
+\begin{frame}{Solution For $\lambda$ = 0.5}
+	\begin{itemize}
+		\item{\large For $\lambda$ = 0.5, we get a constant probability distribution.}
+		\item{\large The reason is that the allowed region at each step just touches the other one.}
+	\end{itemize}
+	\pause
+	\begin{figure}
+    		\centering
+    		\includegraphics[width=\textwidth]{reqd/lambdaEquals0.5.jpg}
+    		\caption{$\lambda$ = 0.5 after 10 steps}
+	\end{figure}
+	\begin{figure}
+    		\centering
+    		\includegraphics[width=0.5\textwidth]{reqd/probabilityDensityLambdaEquals0.5.jpg}
+    		\caption{Endpoint Probability Distribution for $\lambda$ = 0.5}
+	\end{figure}
+\end{frame}
+
+%----------------------------------------------------------------------
+\begin{frame}{Solution For $\lambda>$ 0.5}
+	\begin{itemize}
+	\setlength\itemsep{1em}
+		\item{\large The probability distribution smoothens out as $\lambda$ increases, however the distribution remains singular and these singularities exist at large number of points.}
+		\item{\large The reason is that the allowed regions now overlap into one another giving rise to more points over time in a specific region.}
+		\item{\large The singular probability distribution means a probability distribution concentrated on a set of Lebesgue measure zero, where the probability of each point in that set is zero.}
+		\item{\large The spikiness of the graphs ahead is due to this singular behaviour of probability distribution.}
+	\end{itemize}
+\end{frame}
+
+%----------------------------------------------------------------------
+\begin{frame}{Solution For $\lambda>$ 0.5}
+	\begin{figure}
+    		\centering
+    		\begin{minipage}{0.5\textwidth}
+        		\centering
+        		\includegraphics[width=\textwidth]{reqd/l0.61.jpg}
+        		\caption*{$\lambda$ = 0.61}
+        	\end{minipage}\hfill
+        	\pause
+        	\begin{minipage}{0.5\textwidth}
+        		\centering
+        		\includegraphics[width=\textwidth]{reqd/l0.64.jpg}
+        		\caption*{$\lambda$ = 0.64}
+        	\end{minipage}
+	\end{figure}
+\end{frame}
+
+%----------------------------------------------------------------------
+\begin{frame}{Solution For $\lambda>$ 0.5}
+	\begin{figure}
+    		\centering
+    		\begin{minipage}{0.5\textwidth}
+        		\centering
+        		\includegraphics[width=\textwidth]{reqd/l0.67.jpg}
+        		\caption*{$\lambda$ = 0.67}
+        	\end{minipage}\hfill
+        	\pause
+        	\begin{minipage}{0.5\textwidth}
+        		\centering
+        		\includegraphics[width=\textwidth]{reqd/l0.74.jpg}
+        		\caption*{$\lambda$ = 0.74}
+        	\end{minipage}
+	\end{figure}
+\end{frame}
+
+%----------------------------------------------------------------------
+\begin{frame}{Exact Distribution For $\lambda$ = $\frac{1}{2^{-m}}$}
+	\begin{itemize}
+	\setlength\itemsep{1em}
+		\item{\large For a general random walk process, the probability P(x,N) that the end point of the walk is at x at the Nth step obeys the fundamental convolution equation :}
+		\begin{equation}
+			P(x,N)=\sum_{x'} P(x-x',N-1) p_{N}(x')
+		\end{equation}
+		\item{\large $p_{N}(x)$ is the probability of hopping a distance x at the Nth step}
+		\item{\large The equation expresses the fact that to reach x after N steps, the walk must ﬁrst reach a neighboring point x-x' after N steps and then hop from x-x' to x at the next step}
+		\item{\large Looking at the convolution structure of the equation above, we should try to express it in terms of Fourier Transforms.}
+	\end{itemize}
+\end{frame}
+
+%----------------------------------------------------------------------
+\begin{frame}{Exact Distribution For $\lambda$ = $\frac{1}{2^{-m}}$}
+	\begin{itemize}
+	\setlength\itemsep{1em}
+		\item{\large Define :}
+		\begin{equation}
+			p_{N}(k)=\sum_{n=0}^{N} p_{N}(x) e^{-i\frac{2\pi k}{N}n}
+		\end{equation}
+		\begin{equation}
+			P(k,N)=\sum_{n=0}^{N} P(x,N) e^{-i\frac{2k \pi k}{N}n}
+		\end{equation}
+		\item{\large Taking fourier transform on the both sides of the equation (2) and using the convolution property, one gets :}
+		\begin{equation}
+			P(k,N) = P(k,N-1) p_{N}(k)
+		\end{equation}
+		\item{\large And iterating this equation, we can write P(k,N) in terms of P(k,0) as :}
+		\begin{equation}
+			P(k,N) = P(k,0) \prod_{n=0}^{N} p_n(k)
+		\end{equation}
+	\end{itemize}
+\end{frame}
+
+%----------------------------------------------------------------------
+\begin{frame}{Exact Distribution For $\lambda$ = $\frac{1}{2^{-m}}$}
+	\begin{itemize}
+	\setlength\itemsep{1em}
+		\item{\large At N=0, P(x,N)=P(x,0)=$\delta$(x)}
+		\item{\large Hence, P(k,0)=1}
+		\item{\large Also, the single-step probability distribution at the nth step is :}
+		\begin{equation}
+			p_{n}(x) = \frac{1}{2}(\delta(x-\lambda^{n})+\delta(x+\lambda^{n}))
+		\end{equation}
+		\item{\large Which literally means that x can be approached in a single step either from left or right with $\lambda^{n}$ step-length}
+		\item{\large Therefore,}
+		\begin{equation}
+			p_{n}(k) = \frac{1}{2}(e^{i\lambda^{n}}+e^{-i\lambda^{n}})
+		\end{equation}
+		\begin{equation}
+			p_{n}(k) = cos(k\lambda^{n})
+		\end{equation}
+	\end{itemize}
+\end{frame}
+
+%----------------------------------------------------------------------
+\begin{frame}{Exact Distribution For $\lambda$ = $\frac{1}{2^{-m}}$}
+	\begin{itemize}
+	\setlength\itemsep{1em}
+		\item{\large Thus, the final expression for the fourier transform of probability distribution after N steps is given as :}
+		\begin{equation}
+			P(k,N) = \prod_{n=0}^{N} cos(k\lambda^{n})
+		\end{equation}
+		\item{\large We now apply this exact solution to the illustrative cases of $\lambda=2^{-1/m}$ where m = 1,2,3,...}
+		\item{\large Let us write : $P_{2^{-1/1}}(k,N)$ = $\prod_{1}(k,N)$}
+		\item{\large And $P_{2^{-1/m}}(k,N)$ = $\prod_{m}(k,N)$}
+	\end{itemize}
+\end{frame}
+
+%----------------------------------------------------------------------
+\begin{frame}{Exact Distribution For $\lambda$ = $\frac{1}{2^{-m}}$}
+	\begin{itemize}
+	\setlength\itemsep{1em}
+		\item{\large Consider m = 1, $\lambda$ = $2^{-1}$ = 0.5 and $\lambda^{n}$ = $\frac{1}{2^{n}}$}
+		\item{\large And thus :\\
+		\vspace{1em} \hspace{1em}
+		$\prod_{1}(k,N) = cos(k) cos(k/2) cos(k/4) ... cos(k/2^{N})$\\
+		\vspace{1em} \hspace{2em}
+		$\prod_{1}(k,N) = \frac{sin(2k)}{2sin(k)} \frac{sin(k)}{2sin(k/2)} \frac{sin(k/2)}{2sin(k/4)} ... \frac{sin(\frac{k}{2^{N-1}})}{2sin(\frac{k}{2^{N}})}$}
+		\item{Therefore,\\
+		\vspace{1em} \hspace{8em} \large $\prod_{1}(k,N) = \frac{sin(2k)}{2^{N+1}sin(\frac{k}{2^{N}})}$}
+		\item{\large For N $\rightarrow$ $\infty$ :\\
+		\vspace{1em} \hspace{7.6em}
+		$\prod_{1}(k,N)=\frac{sin(2k)}{2k}$}
+	\end{itemize}
+\end{frame}
+
+%----------------------------------------------------------------------
+\begin{frame}{Exact Distribution For $\lambda$ = $\frac{1}{2^{-m}}$}
+	\begin{itemize}
+	\setlength\itemsep{1em}
+		\item{\large Similarily we can find $\prod_{2}(k,N)$ and $\prod_{3}(k,N)$ as :\\
+		\vspace{1em} \hspace{5em}
+		$\prod_{2}(k,N) = \frac{sin(2k)}{2k} \frac{sin(\sqrt{2}k)}{\sqrt{2}k}$\\
+		\vspace{1em} \hspace{5em}
+		$\prod_{m}(k,N) = \frac{\prod_{j=1}^{m}sin(2^{j/m}k)}{2^{(m+1)/2}k^{m}}$\\
+		}
+		\item{\large Doing inverse fourier transform for these give us P(x,N) i.e. probability distribution as follows :\\
+		\vspace{1em} \hspace{5em}
+			$P_{2^{-1}}(x,N)$ = 0.25 for x $\epsilon$ [-2,2]\\
+		\vspace{1em} \hspace{9.9em}
+			= 0 otherwise}
+	\end{itemize}
+\end{frame}
+
+%----------------------------------------------------------------------
+\begin{frame}{Exact Distribution For $\lambda$ = $\frac{1}{2^{-m}}$}
+	\begin{figure}
+    		\centering
+    		\includegraphics[width=0.7\textwidth]{reqd/pi2xN.jpg}
+	\end{figure}
+		\begin{figure}
+    		\centering
+    		\includegraphics[width=0.7\textwidth]{reqd/pi3xN.jpg}
+	\end{figure}
+\end{frame}
+
+%----------------------------------------------------------------------
+\begin{frame}{Exact Distribution For $\lambda$ = $\frac{1}{2^{-m}}$}
+	\begin{figure}
+    		\centering
+    		\includegraphics[height=0.6\textheight]{reqd/analytic1.jpg}
+	\end{figure}
+	\begin{itemize}
+		\item{\large Dotted Curve $\rightarrow$ m = 1  \&  $\lambda$ = 0.5}
+		\item{\large Dashed Curve $\rightarrow$ m = 2  \&  $\lambda$ = 0.707}
+		\item{\large Solid Curve $\rightarrow$ m = 3  \&  $\lambda$ = 0.794}
+	\end{itemize}
+\end{frame}
+
+%----------------------------------------------------------------------
+\begin{frame}{Exact Distribution For $\lambda$ = $\frac{1}{2^{-m}}$}
+	\begin{itemize}
+	\setlength\itemsep{1em}
+		\item{\large For $\prod_{1}(k,N)$, P(x,N) comes out to be just a constant distribution of 0.25 everywhere inside the region [-2,2], which simulations also show us.}
+		\item{\large While for higher values of m, the probability distribution keeps on spreading-out.}
+		\item{\large The fourier transform method is very useful in calculating the moments e.g. $<x^2>$ and $<x^4>$ etc. For example,\\
+		\vspace{1em} \hspace{5em}
+		$<x^{2k}>=\int x^{2k} P_{\lambda}(x) dx$}
+	\end{itemize}
+\end{frame}
+
+%----------------------------------------------------------------------
+\begin{frame}{Exact Distribution For $\lambda$ = $\frac{1}{2^{-m}}$}
+	\begin{itemize}
+		\item{\large Exapnding the series, we get :}
+	\end{itemize}
+	\begin{figure}
+    		\centering
+    		\includegraphics[width=0.8\textwidth]{reqd/moments.jpg}
+	\end{figure}
+	\begin{itemize}
+		\item{\large Fourier transform contains all the moments of the
+distribution}
+	\end{itemize}
+\end{frame}
+
+%----------------------------------------------------------------------
+\begin{frame}{Exact Distribution For $\lambda$ = $\frac{1}{2^{-m}}$}
+	\begin{itemize}
+		\item{\large Let us take the Fourier transform of the probability distribution of the geometric random walk and expand this expression in a power series in k to give :}
+	\end{itemize}
+	\begin{figure}
+    		\centering
+    		\includegraphics[width=0.8\textwidth]{reqd/moments2.jpg}
+	\end{figure}
+	\begin{itemize}
+		\item{\large And therefore, we can compare and find out $<x^2>$ and $<x^4>$ easily by comparing}
+	\end{itemize}
+\end{frame}
+
+%----------------------------------------------------------------------
+\begin{frame}{Exact Distribution For $\lambda$ = $\frac{1}{2^{-m}}$}
+	\begin{figure}
+    		\centering
+    		\includegraphics[width=0.6\textwidth]{reqd/moments3.jpg}
+	\end{figure}
+\end{frame}
+
+%----------------------------------------------------------------------
+\begin{frame}{Distribution For $\lambda$ = $\frac{2}{1+\sqrt{5}}$}
+	\begin{itemize}
+	\setlength\itemsep{1em}
+		\item{\large This number $\frac{2}{1+\sqrt{5}} \approx 0.618$ is the inverse of golden ratio and let us denote it by g}
+		\item{\large We take advantage of the algebra of g to calculate the endpoint location after Nth step or simply $X_{n}$}
+		\item{\large The relations which hold true for g are :}
+		\begin{equation}
+			g^{2}=g-1
+		\end{equation}
+		\begin{equation}
+			g^{n}=(-1^{n})(F_{n-1}-gF_{n})
+		\end{equation}
+	\end{itemize}
+	\vspace{1em}
+	\centering
+	Where $F_{n}$ is nth Fibonacci Number
+\end{frame}
+
+%----------------------------------------------------------------------
+\begin{frame}{Distribution For $\lambda$ = $\frac{2}{1+\sqrt{5}}$}
+	\begin{itemize}
+	\setlength\itemsep{1em}
+		\item{\large The general expression for $x_{n}$ is :\\
+		\vspace{1em} \hspace{5em}
+		$x_{n}=\sum_{n=0}^{N}\epsilon g^{n}$\\
+		\vspace{1em}
+		where $\epsilon$ = +1 or -1 randomly}
+		\item{\large Hence}
+		\begin{equation}
+			x_{n}=\sum_{n=0}^{N}\epsilon (-1^{n})(F_{n-1}-gF_{n})
+		\end{equation}
+		\item{\large Therefore, $x_{n}$ can be written in as $x_{n}=Ag+B$ , where A and B are integers whose values depend on the sign of $\epsilon$ or indirectly to the walk}
+	\end{itemize}
+\end{frame}
+
+%----------------------------------------------------------------------
+\begin{frame}{Distribution For $\lambda$ = $\frac{2}{1+\sqrt{5}}$}
+	\begin{itemize}
+	\setlength\itemsep{1em}
+		\item{\large We consider many walkers, say a million}
+		\item{\large For each walker we give a string of random values of $\epsilon$ as +1 and -1}
+		\item{\large And then we evaluate $x_n$ for each walker by summing the series in equation (13)}
+		\item{\large Desired precision can be obtained depending on the value of total number of steps in the walk.}
+	\end{itemize}
+\end{frame}
+
+%----------------------------------------------------------------------
+\begin{frame}{Distribution For $\lambda$ = $\frac{2}{1+\sqrt{5}}$}
+	\begin{figure}
+    		\centering
+    		\includegraphics[width=\textwidth]{reqd/g.jpg}
+	\end{figure}
+\end{frame}
+
+%----------------------------------------------------------------------
+\begin{frame}{Distribution For $\lambda$ = $\frac{2}{1+\sqrt{5}}$}
+	\begin{itemize}
+	\setlength\itemsep{1em}
+		\item{\large This is again a self-similar structure.}
+		\item{\large Various kinds of symmetries do exist e.g. $P_{g}(x)=P_{g}(-x)$}
+		\item{\large Other higher order symmetries also do exist :\\
+		\vspace{1em}	
+		$P_{g}(1+x)=P_{g}(1-x)$ for mod(x) $<$ $g^{2}$}
+		\item{\large g is a very irrational number. And only one possible combination which sums to g is $1-g+g^2-g^3+g^4-$... That is why there is a sharp dip at x=g}
+		\item{\large The same reason is true for the sharp dip at x=$g^2$,$g^4$ etc.}
+	\end{itemize}
+\end{frame}
+
+%----------------------------------------------------------------------
+\begin{frame}
+	\centering
+	\Huge Thank You
+\end{frame}
+
+\end{document}
